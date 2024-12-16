@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+    <link rel="stylesheet">
+</head>
+<body>
+    {% include 'header.html' %}
+    <h1>Список авторов</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Дата рождения</th>
+                <th>Биография</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in authors %}
+            <tr>
+                <td>{{ author.id }}</td>
+                <td>{{ author.name }}</td>
+                <td>{{ author.birth_date }}</td>
+                <td>{{ author.bio }}</td>
+                <td>
+                    <a href="{% url 'books_by_author' author.id %}"><button>Его книги</button></a>
+                    <a href="{% url 'update_author' author.id %}"><button>Редактировать</button></a>
+                    <a href="{% url 'delete_author' author.id %}"><button>Удалить</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

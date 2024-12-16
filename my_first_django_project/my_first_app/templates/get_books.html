@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link rel="stylesheet">
+</head>
+<body>
+    {% include 'header.html' %}
+    <h1>Список книг</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Дата публикации</th>
+                <th>Автор</th>
+                <th>Издатель</th>
+                <th>Жанры</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.publication_date }}</td>
+                <td>{{ book.author.name }}</td>
+                <td>{{ book.publisher.name }}</td>
+                <td>
+                    {% for genre in book.genres.all %}
+                        {{ genre.name }}
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{% url 'book_detail' book.id %}"><button>Данные</button></a>
+                    <a href="{% url 'update_book' book.id %}"><button>Редактировать</button></a>
+                    <a href="{% url 'delete_book' book.id %}"><button>Удалить</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><a href="{% url 'sorted_books' %}"><button>Сортировать</button></a></p>
+</body>
+</html>

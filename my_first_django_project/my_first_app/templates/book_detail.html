@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book detail</title>
+    <link rel="stylesheet">
+</head>
+<body>
+    {% include 'header.html' %}
+    <h1>Данные книг</h1>
+
+    <h3>Всего книг: {{ total_books }}</h3>
+
+    <p>ID: {{ book.id }}</p>
+    <p>Название: {{ book.title }}</p>
+    <p>Дата публикации: {{ book.publication_date }}</p>
+    <p>Автор: {{ book.author.name }}</p>
+</body>
+</html>

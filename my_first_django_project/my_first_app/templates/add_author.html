@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add author</title>
+    <link rel="stylesheet">
+</head>
+<body>
+    {% include 'header.html' %}
+    <h1>Добавить нового автора</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {% for field in form %}
+                <tr>
+                    <td>{{ field.label_tag }}</td>
+                    <td>{{ field }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <button type="submit">Сохранить</button>
+    </form>
+</body>
+</html>
